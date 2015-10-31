@@ -1,0 +1,44 @@
+#webApp{
+
+  #main-menu{
+    background-color: #337ab7;
+    padding: 0 16px;
+    color: #fff;
+    font-size: 1.2em;
+    border-bottom: 1px groove #337ab7;
+    margin-bottom: 50px;
+
+      li{
+        padding-top: 16px;
+        padding-bottom: 16px;
+        cursor: pointer;
+
+          &:hover{
+            background-color: rgba(255, 255, 255, .5);
+          }
+
+          &.active{
+            background-color: rgba(1, 1, 1, .5) !important;
+          }
+      }
+  }
+
+  #river{
+    blockquote {
+      overflow: hidden;
+      margin-bottom: 30px;
+    }
+
+  }
+
+  .msg{
+    padding: 10px 15px;
+    background-color: #fafafa;
+    margin: 10px 0 10px;
+  }
+
+  textarea{
+    margin-bottom: 10px;
+  }
+
+}

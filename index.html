@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="bower_components/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="css/base.css">
 
 
     <script type="application/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
@@ -17,38 +19,49 @@
 
     <div id="webApp" class="container">
         <nav id="main-menu" class="row">
-            <div class="col-md-4">myWebApp</div>
-            <div class="col-md-4">Stream</div>
-            <div class="col-md-4">my username</div>
+            <ul class="nav">
+                <li class="col-md-4">myWebApp</li>
+                <li class="col-md-4 active">Stream</li>
+                <li class="col-md-4">my username</li>
+            </ul>
         </nav>
         <section id="new-msg">
+            <h2>Stream</h2>
             <form action="#" method="post">
                 <div class="form-group">
                     <textarea name="msg" id="msg" placeholder="New Message.." class="form-control" rows="3"></textarea>
-                    <button class="btn btn-primary pull-right">Send</button>
+                    <button class="btn btn-danger pull-right"><i class="fa fa-paper-plane"></i> Send</button>
                     <div class="clearfix">&nbsp;</div>
                 </div>
                 <div class="form-group pull-right">
                     <label for="order-by">order by</label>
-                    <select name="order-by" id="order-by">
-                        <option value="date">Date</option>
-                        <option value="rating">Rating</option>
+                    <select name="order-by" id="order-by" ng-controller = "OrderController as order">
+                        <option value="created_at" ng-click = "order.setOrder('date')">Date</option>
+                        <option value="rating" ng-click = "order.setOrder('rating')">Rating</option>
                     </select>
                 </div>
             </form>
         </section>
+        <div class="clearfix">&nbsp;</div>
+        <section id="river" ng-controller = "RiverController as riverCtrl">
+            <blockquote class="" ng-repeat="post in riverCtrl.list.data | orderBy: '+created_at'">
+                <div>
+                    <strong title="author">{{post.author.username}}</strong> &nbsp;
+                    <br class="visible-xs-block">
+                    (<i class="fa fa-clock-o"></i> {{post.created_at | date:'dd/MM/yyyy - H:mm'}})
+                </div>
+                <div class="clearfix visible-xs-block">&nbsp;</div>
+                <p class="msg">{{post.message}}</p>
+                <div class="clearfix visible-sm-block visible-xs-block">
+                    <hr>
+                </div>
+                <div class="pull-right">
+                    <div class="btn btn-info"><i class="fa fa-star"></i> Vote {{post.rating}}</div>
+                    <div class="btn btn-primary"><i class="fa fa-book"></i> Read More</div>
+                </div>
+            </blockquote>
+        </section>
     </div>
-
-    <section id="river" ng-controller = "RiverController as riverCtrl">
-        <div class="message" ng-repeat="post in riverCtrl.list.data">
-            <h3>{{post.message}}</h3>
-            <p>{{post.author.username}}</p>
-            <hr>
-            <p>Rating: {{post.rating}}</p>
-            <p>Date: {{post.createdAt}}</p>
-        </div>
-        <h1>Stream</h1>
-    </section>
 
 </body>
 </html>
