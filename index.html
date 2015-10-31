@@ -2,15 +2,24 @@
 <html lang="it" ng-app="main">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
 
-    <script type="application/javascript" src="js/bootstrap.min.js"></script>
+
+    <script type="application/javascript" src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script type="application/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
+    <script type="application/javascript" src="bower_components/jquery-ui/jquery-ui.min.js"></script>
     <title>AngularJS Test</title>
 </head>
 <body>
-    <script type="application/javascript" src="js/angular.min.js"></script>
+    <script type="application/javascript" src="bower_components/angular/angular.min.js"></script>
     <script type="application/javascript" src="js/app.js"></script>
 
-    I am {{4 + 10}}
+    <div class="message" ng-controller="GenController as river">
+        <h3>{{river.rpost.message}}</h3>
+        <p>{{river.rpost.author}}</p>
+        <hr>
+        <p>Rating: {{river.rpost.rating}}</p>
+    </div>
+
 </body>
 </html>
