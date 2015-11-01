@@ -26,6 +26,7 @@
         that = this;
         this.list = [];
         this.order = "+created_at";
+        this.newPost = {};
 
         $http.get('json/stream-data.json').success(function (data) {
 

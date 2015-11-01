@@ -1,9 +1,9 @@
 <section id="new-msg">
     <h2>Stream</h2>
-    <form action="#" method="post" >
+    <form name="addPost" ng-submit = "newMsgCtrl.submit(riverCtrl.list)" novalidate>
         <div class="form-group">
-            <textarea name="msg" id="msg" placeholder="New Message.." class="form-control" rows="3"></textarea>
-            <button class="btn btn-danger pull-right"><i class="fa fa-paper-plane"></i> Send</button>
+            <textarea name="msg" id="msg" placeholder="New Message.." class="form-control" rows="3" ng-model = "newMsgCtrl.newPost.text"></textarea>
+            <button class="btn btn-danger pull-right" type="submit"><i class="fa fa-paper-plane"></i> Send</button>
             <div class="clearfix">&nbsp;</div>
         </div>
         <div class="form-group pull-right">

@@ -7,7 +7,16 @@
 
         return {
             restriction: 'E',
-            templateUrl: 'templates/navigation.html'
+            templateUrl: 'templates/navigation.html',
+            controller: function () {
+                this.page = "river";
+
+                this.setNav = function (p){
+
+                    this.page = p;
+                }
+            },
+            controllerAs: 'navCtrl'
         };
 
     });
@@ -16,7 +25,34 @@
 
         return {
             restriction: 'E',
-            templateUrl: 'templates/river/new-msg.html'
+            templateUrl: 'templates/river/new-msg.html',
+            controller: ["$http", function ($http) {
+                var that;
+
+                that = this;
+                this.newPost = {};
+
+                this.submit = function (list) {
+
+                    if(this.newPost.text.length > 0){
+                        $http.get('json/who-am-i.json').success(function (data) {
+
+                            list["data"].push({
+                                "created_at": Date.now(),
+                                "author": data["data"],
+                                "message": that.newPost.text,
+                                "rating": 0
+                            });
+
+                            that.newPost = {};
+
+                        });
+                    }
+
+                }
+
+            }],
+            controllerAs: "newMsgCtrl"
         };
 
     });

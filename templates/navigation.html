@@ -1,7 +1,15 @@
 <nav id="main-menu" class="row">
     <ul class="nav">
-        <li class="col-md-4"><img src="/assets/dummy.gif" alt="myWebApp" id="logo"></li>
-        <li class="col-md-4 active"><a ng-href="#/river">Stream</a></li>
-        <li class="col-md-4"><a ng-href="#/username">my username</a></li>
+        <li class="col-md-4"><img src="assets/dummy.gif" alt="myWebApp" id="logo"></li>
+        <li class="col-md-4">
+            <a ng-href="#/river" ng-class = "{'active': navCtrl.page === 'river'}" ng-click = "navCtrl.setNav('river')">
+                <i class="fa fa-bars"></i> Stream
+             </a>
+        </li>
+        <li class="col-md-4">
+            <a ng-href="#/username" ng-class="{'active': navCtrl.page === 'username'}" ng-click = "navCtrl.setNav('username')">
+                <i class="fa fa-user"></i> my username
+            </a></li>
     </ul>
 </nav>
+
