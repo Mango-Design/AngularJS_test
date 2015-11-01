@@ -11,6 +11,6 @@
     </div>
     <div class="pull-right">
         <div class="vote btn " ng-class = "{'btn-success': post.flag_voted === true, 'btn-info': post.flag_voted !== true}" ng-click = "riverCtrl.vote(post.post_tid)"><i class="fa fa-star"></i> Vote {{post.rating}}</div>
-        <div class="btn btn-primary"><i class="fa fa-book"></i> Read More</div>
+        <a class="btn btn-primary" ng-href="#/single/{{post.post_tid}}"><i class="fa fa-book"></i> Read More</a>
     </div>
 </blockquote>

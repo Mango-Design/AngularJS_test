@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="it" ng-app="main">
+<html lang="it" ng-app="Main">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -15,24 +15,14 @@
 </head>
 <body>
     <script type="application/javascript" src="bower_components/angular/angular.min.js"></script>
+    <script type="application/javascript" src="bower_components/angular-route/angular-route.min.js"></script>
     <script type="application/javascript" src="js/app.js"></script>
-    <script type="application/javascript" src="js/directives.js"></script>
+    <script type="application/javascript" src="js/directives/directives.js"></script>
 
     <div id="webApp" class="container">
 
         <navigation></navigation>
-
-        <section id="river" ng-controller = "RiverController as riverCtrl">
-
-            <new-msg></new-msg>
-
-            <div class="clearfix">&nbsp;</div>
-
-            <section>
-                <post-river></post-river>
-            </section>
-
-        </section>
+        <div ng-view></div>
     </div>
 
 </body>

@@ -7,7 +7,7 @@
 
         return {
             restriction: 'E',
-            templateUrl: 'navigation.html'
+            templateUrl: 'templates/navigation.html'
         };
 
     });
@@ -16,7 +16,7 @@
 
         return {
             restriction: 'E',
-            templateUrl: 'new-msg.html'
+            templateUrl: 'templates/river/new-msg.html'
         };
 
     });
@@ -25,7 +25,7 @@
 
         return {
             restriction: 'E',
-            templateUrl: 'post-river.html'
+            templateUrl: 'templates/river/post-river.html'
         };
 
     });

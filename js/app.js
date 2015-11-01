@@ -1,6 +1,22 @@
 (function () {
 
-    var app = angular.module('main', ['main-directives']);
+    var app = angular.module('Main', ['ngRoute', 'main-directives'])
+        .config(function ($routeProvider) {
+
+            $routeProvider
+                .when("/", {
+                    templateUrl: "templates/river/index.html"
+                })
+                .when('/single', {
+                    templateUrl: 'templates/single/index.html'
+                })
+                .when('/username', {
+                    templateUrl: 'templates/username/index.html'
+                })
+                .when("/river", {
+                    redirectTo: "/"
+                });
+        });
 
 
     app.controller("RiverController", ['$http', function($http){
@@ -9,14 +25,30 @@
 
         that = this;
         this.list = [];
+        this.order = "+created_at";
 
         $http.get('json/stream-data.json').success(function (data) {
 
-            that.list = data;
+            that.list = that.add_index(data);
 
         });
 
-        this.order = "+created_at";
+
+        this.add_index = function (arr) {
+          /*This function enables the vote casting by adding a custom property (post_tid) on each post object to keep track of single entities*/
+            var i, len, ret;
+
+            ret = arr["data"] || [];
+            len = ret.length;
+
+            for(i = 0; i < len; i++){
+                ret[i]["post_tid"] = i;
+            }
+
+            arr["data"] = ret;
+
+            return arr;
+        };
 
         this.vote = function (id){
             /*Allows vote casting
@@ -29,7 +61,7 @@
 
             data = this.list;
 
-            cache = data["data"];
+            cache = data["data"]; //faster access to the array, useful for long iterations
             len = cache.length;
             i = 0;
 

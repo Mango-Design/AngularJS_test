@@ -1,5 +1,19 @@
 #webApp{
 
+  #logo{
+    height: 80px;
+    margin: 0 auto;
+    display: block;
+    background: url(../assets/logo.svg) no-repeat center;
+    z-index: 5;
+  }
+
+  .no-svg #logo {
+    background: url(../assets/logo.png) no-repeat center;
+    background-size: contain;
+  }
+
+
   #main-menu{
     padding: 0;
     color: #337ab7;
@@ -40,5 +54,7 @@
   textarea{
     margin-bottom: 10px;
   }
+
+
 
 }
