@@ -1,0 +1,16 @@
+<blockquote class="" ng-repeat="post in riverCtrl.list.data | orderBy: riverCtrl.order">
+    <div>
+        <strong title="author">{{post.author.username}}</strong> &nbsp;
+        <br class="visible-xs-block">
+        (<i class="fa fa-clock-o"></i> {{post.created_at | date:'dd/MM/yyyy - H:mm'}})
+    </div>
+    <div class="clearfix visible-xs-block">&nbsp;</div>
+    <p class="msg">{{post.message}}</p>
+    <div class="clearfix visible-sm-block visible-xs-block">
+        <hr>
+    </div>
+    <div class="pull-right">
+        <div class="vote btn " ng-class = "{'btn-success': post.flag_voted === true, 'btn-info': post.flag_voted !== true}" ng-click = "riverCtrl.vote(post.post_tid)"><i class="fa fa-star"></i> Vote {{post.rating}}</div>
+        <div class="btn btn-primary"><i class="fa fa-book"></i> Read More</div>
+    </div>
+</blockquote>

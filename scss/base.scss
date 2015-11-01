@@ -1,12 +1,12 @@
 #webApp{
 
   #main-menu{
-    background-color: #337ab7;
-    padding: 0 16px;
-    color: #fff;
+    padding: 0;
+    color: #337ab7;
     font-size: 1.2em;
-    border-bottom: 1px groove #337ab7;
+    border-bottom: 1px groove #d9edf7;
     margin-bottom: 50px;
+    font-weight: bold;
 
       li{
         padding-top: 16px;
@@ -14,11 +14,11 @@
         cursor: pointer;
 
           &:hover{
-            background-color: rgba(255, 255, 255, .5);
+            background-color: rgba(51,122,183,.1)
           }
 
           &.active{
-            background-color: rgba(1, 1, 1, .5) !important;
+            background-color: rgba(51,122,183,.2)!important;
           }
       }
   }
