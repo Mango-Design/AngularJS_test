@@ -2,7 +2,7 @@
 
     angular.module('main-controllers', [])
 
-        .controller("RiverController", ["$http", function ($http) {
+        .controller("RiverController", function ($http, $scope, sharedVault) {
 
             var that;
 
@@ -11,9 +11,13 @@
             this.order = "+created_at";
             this.newPost = {};
 
+            $scope.sharedVault = sharedVault;
+
+
             $http.get('json/stream-data.json').success(function (data) {
 
                 that.list = that.add_index(data);
+                $scope.sharedVault.list = that.list;
 
             });
 
@@ -34,10 +38,7 @@
             };
 
             this.vote = function (id){
-                /*Allows vote casting
-                 *
-                 * TODO should insert a control over users that already voted to prevent multiple votes from the same users, since this is a simulation i'll use just a flag 'voted'
-                 * */
+                /*Allows vote casting */
 
                 var data, i, len, cache;
 
@@ -69,8 +70,42 @@
                 }
             };
 
-        }])
-        .controller("PostIndexController" ["$http", function ($http) {}])
+        })
+        .controller("PostIndexController", function ($routeParams, $scope, sharedVault) {
+            var data, post, i, len, id;
+
+            $scope.sharedVault = sharedVault;
+            data = $scope.sharedVault.list.data;
+            id = $routeParams.id;
+            this.post = {};
+
+            i = 0;
+            len = data.length;
+
+            while(i < len && data[i].post_tid != id){
+                i++;
+            }
+
+            if(i < len){
+                this.post = data[i];
+            }
+
+            this.vote = function (id){
+                /*Allows vote casting */
+
+                if(this.post.flag_voted === true){
+
+                    this.post.rating--;
+                    this.post.flag_voted = false;
+
+                } else {
+
+                    this.post.rating++;
+                    this.post.flag_voted = true;
+                }
+            };
+
+        })
         .controller("NavController", function () {
 
             this.page = "river";
@@ -81,7 +116,7 @@
             }
 
         })
-        .controller("NewMessageController", ["$http", function ($http) {
+        .controller("NewMessageController", function ($http) {
 
             var that;
 
@@ -108,7 +143,7 @@
 
             }
 
-        }])
+        })
 
 
 

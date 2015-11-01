@@ -1,6 +1,6 @@
 (function () {
 
-    angular.module('Main', ['ngRoute', 'main-directives', 'main-controllers'])
+    angular.module('Main', ['ngRoute', 'main-directives', 'main-controllers', 'main-services'])
 
         .config(function ($routeProvider) {
 
@@ -10,7 +10,7 @@
                     controller: 'RiverController',
                     controllerAs: "riverCtrl"
                 })
-                .when('/single', {
+                .when('/single/:id', {
                     templateUrl: 'templates/single/index.html',
                     controller: 'PostIndexController',
                     controllerAs: "postIndexCtrl"

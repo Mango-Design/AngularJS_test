@@ -1,0 +1,16 @@
+<blockquote>
+    <div>
+        <strong title="author">{{postIndexCtrl.post.author.username}}</strong> &nbsp;
+        <br class="visible-xs-block">
+        (<i class="fa fa-clock-o"></i> {{postIndexCtrl.post.created_at | date:'dd/MM/yyyy - H:mm'}})
+    </div>
+    <div class="clearfix visible-xs-block">&nbsp;</div>
+    <p class="msg">{{postIndexCtrl.post.message}}</p>
+    <div class="clearfix visible-sm-block visible-xs-block">
+        <hr>
+    </div>
+    <div class="pull-right">
+        <div class="vote btn " ng-class = "{'btn-success': postIndexCtrl.post.flag_voted === true, 'btn-info': postIndexCtrl.post.flag_voted !== true}" ng-click = "postIndexCtrl.vote(postIndexCtrl.post.post_tid)"><i class="fa fa-star"></i> Vote {{postIndexCtrl.post.rating}}</div>
+    </div>
+
+</blockquote>
